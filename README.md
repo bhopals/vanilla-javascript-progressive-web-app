@@ -1,5 +1,7 @@
 
+
 ## Vanilla JavaScript - Progressive Web Applications ##
+
 
 
 **Progressive Web Apps (PWS)** 
@@ -10,6 +12,8 @@
     
     -   On mobile devices, browser support adding web apps to home screen, the result is an
         app-like experience 
+
+
 
     
     This is what progressive Web Apps are all about. Progressive web apps, or PWA's are website that can be stored on a mobile device using new web app technology like **Web App manifest** and **JavaScript Service workers** 
