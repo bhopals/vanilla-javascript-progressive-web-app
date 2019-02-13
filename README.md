@@ -102,7 +102,7 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 - PWAs require HTTPS
 - Add to home screen not supported in iOS.
 
-**Service Workers**
+#### Service Workers ####
     - A script run by browser
     - Run in background
     - Separate from a webpage
@@ -113,5 +113,57 @@ Make sure to add extra META tag information to make the APP iOS compatible.
     -   Background sync
     -   Intercept Network Requests
     -   Manage Cache
+    -   Intercept request to serve local files
+    -   Offline capabilites
+
+**Service Workers Lifecycle**
+    
+    -   Register - Registering a service worker
+            -   App-like Functionality
+            -   Navigator.serviceWorker.register() - (Should be from Main Script)
+            -   Scope - Always should be public root of your domain (Customary)
+
+    -   Install
+            -   Files Once
+            -   Offlince Cache initialization
+            -   Notified by promise ( waitUntil METHOD)
+            
+    -   Activate
+            -   Update or replace cached files
+            -   claim() - If clients are claimed then only the fetches goes through the Service Workers
+            -   skipWaiting() - To remove the old Service worker and activating/ installing the new one
+
+    
+    -   Fetch
+            -   Custom Navigation - can interrupt navigation event and provide custom functionality
+            -   Cache First Policy - In this case NO internet connetion required
+            -   Network First Policy
+            -   Stale while revalidate Policy
+    
+    -   Add to home screen
+            -   The app isn't already installed
+            -   The user has interacted with the domain for 30 seconds
+            -   Served over HTTPS
+            -   Registers a service worker that includes a fetch over event handler
+            -   A web manifest is added to the home screen 
+    
+    -   Push
+            -   Reengage Users
+            -   Native app - Messaging
+            -   Visual and auditory cues
 
 
+
+**Note**
+    To check that SITE is PWA or not. In Chrome Dev Tools, go to AUDIT section, click on RUN AUDIT. Once clicked
+    a full AUDIT would run and scan for all PWA checklist options**
+
+**Progressive Web App CheckList** (Failed Error List)
+
+    1. Does not respond with a 200 when offline
+    2. User will not be prompted to Install the Web App
+    3. Failures: Site does not register a service worker.
+    4. Does not redirect HTTP traffic to HTTPS
+    5. Does not register a service worker
+
+For more Informatio : https://developers.google.com/web/progressive-web-apps/checklist
