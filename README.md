@@ -121,19 +121,132 @@ Make sure to add extra META tag information to make the APP iOS compatible.
     -   Register - Registering a service worker
             -   App-like Functionality
             -   Navigator.serviceWorker.register() - (Should be from Main Script)
-            -   Scope - Always should be public root of your domain (Customary)
+            -   Scope - Always should be public root of your domain (its Customary to serve a service worker
+                from root of the site)
+
+
+            This should go into initialize JS file of the PROJECT so it can register Service Workers.
+            ```
+
+            if('serviceWorker' in navigator) {
+
+                //Register ServiceWorker
+                navigator.serviceWorker.register('/sw.js').then(function(response){
+                    console.log("Scope: "+response.scope);
+                    console.log("Service Worker Registered");
+                }, function(error){
+                    console.log("Service Worker Registration Failed");
+                    console.log(error);
+                });
+            } else {
+                console.log("Service Workers Not Supported");
+            }
+            ```
 
     -   Install
             -   Files Once
             -   Offlince Cache initialization
             -   Notified by promise ( waitUntil METHOD)
             
+            Note - Use the **SELF** keyword to refer the SERVICE Worker.
+
+            ```
+            var  cacheName = "CSv1";
+
+                var cacheFiles = [
+                    '/',
+                    '/index.html',
+                    '/js/main.js',
+                    '/css/main.css'
+                ];
+
+                self.addEventListener('install', function(event){
+                    console.log("Service Worker Install Event");
+                
+                    //Add files to the cache
+                    event.waitUntil(
+
+                        caches.open(cacheName).then(function(cache){
+                            console.log("Caching Files",cache);
+                            return cache.addAll(cacheFiles);
+                        }).then(function(){
+                            return self.skipWaiting();
+                        }).catch(function(error){
+                            console.log("Cache Failed:",error);
+                        })
+                    )
+                    
+                });
+
+            ```
+
+            Here in install event callback method, while adding files to the cache, we would call
+            event.waitUntil() method that takes a PROMISE as a parameter which defines the length 
+            of the install process. Here we would chain TWO promises
+
+            For example:
+
+            event.waitUntil(
+
+                cache.open("cacheName").then(function(result){
+                    return cache.addAll(cacheFiles) //Returning PROMISE from here
+                }).then(function(){//Chained PROMISE
+                    self.skipWaiting();
+                    //It will simply makes the new Service Worker ACTIVE 
+                    //Service Worker. It will not wait OLD service Workers to 
+                    // handle all the fetches.
+                }).cathc(function(error){
+                    //ERROR 
+                })
+
+            )
+
+
+
+
+
+
+
+
+
     -   Activate
             -   Update or replace cached files
             -   claim() - If clients are claimed then only the fetches goes through the Service Workers
             -   skipWaiting() - To remove the old Service worker and activating/ installing the new one
 
     
+
+        ```
+
+            self.addEventListener('activate', function(event){
+                console.log("Service Worker Activated");
+                
+                event.waitUntil(
+                    
+                    caches.keys().then(function(keyList){
+                        
+                        return Promise.all(keyList.map(function(key){
+                            if(key !== cacheName){
+                                console.log("Removing OLD Cache", key);
+                                return cache.delete(key)
+                            }
+                        }));
+                    })
+
+                );
+
+            })
+
+
+        ```
+        Here Promise.all returned in the keyList.map method resolve. Promise.all is a convenient way to aggregate promises with associated collections. It will return a fulfilled promise if all the promise
+         in the collection are fullfilled. If any promise in the collection rejects, all methods will fail. 
+         Essentailly, a fulfilled promise is returned when each outdated cache is deleted.
+
+
+        client.claims set the service worker as the active service worker for all clients in scope.
+        self.clients.claim();
+
     -   Fetch
             -   Custom Navigation - can interrupt navigation event and provide custom functionality
             -   Cache First Policy - In this case NO internet connetion required
