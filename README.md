@@ -39,3 +39,13 @@
     -   Easily Shared
     -   Increased User engagement
     
+
+#### Icon for the PWA ####
+http://realfavicongenerator.net  for the ICON.
+ - Load your transparent ICON file and Upload. Once uploaded, select/choose the color for the background color. 
+ - Also, can select ICON version for Andriod, IOS, safari, windows with CUSTOM name for the app.
+ - At favicon Generator Options, choose "I will place favicon files...at the root" and click on **GENERATE your
+ favicons HTML code**
+ - This will genenerate ICONS and provide option to "Download generated Favicons".
+ - After downloaded, unzip and copy all the files in the root directory of the project.
+ - Also, copy the HTML code to add that in INDEX.html(In the HEAD section of the document).
