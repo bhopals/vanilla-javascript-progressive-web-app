@@ -87,3 +87,31 @@ http://realfavicongenerator.net  for the ICON.
     More Details :
     https://app-manifest.firebaseapp.com/
     https://developers.google.com/web/fundamentals/web-app-manifest/
+
+
+**iOs Emulater**
+Make sure to add extra META tag information to make the APP iOS compatible.
+``` 
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-stautus-bar-style" content="default">
+        <link rel="apple-touch-startup-image" href="/apple-touch-icon.png">
+
+```
+
+#### Emulator Development Limitations ####
+- PWAs require HTTPS
+- Add to home screen not supported in iOS.
+
+**Service Workers**
+    - A script run by browser
+    - Run in background
+    - Separate from a webpage
+    - Provides access to featurs
+
+**Service Workers Features**
+    -   Push Notifications
+    -   Background sync
+    -   Intercept Network Requests
+    -   Manage Cache
+
+
