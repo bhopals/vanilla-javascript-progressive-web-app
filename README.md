@@ -102,7 +102,8 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 - PWAs require HTTPS
 - Add to home screen not supported in iOS.
 
-#### Service Workers ####
+#### Service Workers ####  More Details (https://serviceworke.rs/)
+
     - A script run by browser
     - Run in background
     - Separate from a webpage
@@ -203,12 +204,6 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 
 
 
-
-
-
-
-
-
     -   Activate
             -   Update or replace cached files
             -   claim() - If clients are claimed then only the fetches goes through the Service Workers
@@ -251,8 +246,45 @@ Make sure to add extra META tag information to make the APP iOS compatible.
             -   Custom Navigation - can interrupt navigation event and provide custom functionality
             -   Cache First Policy - In this case NO internet connetion required
             -   Network First Policy
+            -   Cache-Then-Network Policy
+            -   Network-Then-Cache Policy
             -   Stale while revalidate Policy
+
+                ```
+                self.addEventListener('fetch', function(event){
+                    //when any request is made on PWA
+                    console.log("Fetch Event Occurent:", event.request.url);
+                    
+                    //RespondWith Method requires a PROMISE
+                    event.respondWith(
+
+                        //Cache-then-Network Policy
+                        caches.match(event.request).then(function(response){
+                            return response || fetch(event.request);
+                        })
+
+                        //Network-then-Cache Policy
+                        caches.match(event.request).then(function(response){
+                            return fetch(event.request) ||  response;
+                        })
+
+
+                    );
+                    
+                })
+               
+                ```
+           
+            
+
+
     
+
+
+
+        //TO Intercept request
+
+
     -   Add to home screen
             -   The app isn't already installed
             -   The user has interacted with the domain for 30 seconds

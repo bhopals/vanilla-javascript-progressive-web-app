@@ -12,7 +12,6 @@
         
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="sw.js"></script>
         <script src="js/main.js"></script>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,9 +21,8 @@
         <meta name="msapplication-TileColor" content="#ffc40d">
         <meta name="theme-color" content="#264de4">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-stautus-bar-style" content="default">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <link rel="apple-touch-startup-image" href="/apple-touch-icon.png">
-        
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -50,7 +48,13 @@
 
         <div class="main-container">
             <div class="main wrapper clearfix">
-
+                <section id="addToHomeScreen">
+                    <h1>Install App</h1>
+                    <img src="android-chrome-192x192.png" alt="NCC CS" />
+                    Add our app to your home screen?<br />
+                    <a href="javascript:void(0)" onClick="hidePrompt()" style="text-decoration:none;">No, Thanks</a>
+                    <button onClick="installApp()">Yes, Please!</button>
+                </section>
                 <article id="top">
                     <header>
                         <h1>Welcome!</h1>

@@ -12,17 +12,17 @@ function toggleNav(){
     hidden = !hidden;
 }
 
-
-if('serviceWorker' in navigator) {
-
-    //Register ServiceWorker
-    navigator.serviceWorker.register('/sw.js').then(function(response){
-        console.log("Scope: "+response.scope);
-        console.log("Service Worker Registered");
+if('serviceWorker' in navigator){
+    //register the service worker
+    navigator.serviceWorker.register('/sw.js').then(function(result){
+        console.log('Service Worker Registered');
+        console.log('Scope: ' + result.scope);
     }, function(error){
-        console.log("Service Worker Registration Failed");
+        console.log('Service Worker Regiatration Failed');
         console.log(error);
     });
-} else {
-    console.log("Service Workers Not Supported");
+}else{
+    console.log('Service Workers Not Supported');
 }
+
+
