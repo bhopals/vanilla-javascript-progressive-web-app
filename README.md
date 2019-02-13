@@ -174,4 +174,4 @@ For more Informatio : https://developers.google.com/web/progressive-web-apps/che
 
 ### Demo
 
-[Demo Link](https://javascript-card-game.herokuapp.com/)
+[Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)
