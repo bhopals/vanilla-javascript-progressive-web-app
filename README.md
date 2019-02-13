@@ -84,3 +84,6 @@ http://realfavicongenerator.net  for the ICON.
     ```
 
     So by doing that, we can setup different color and start-url for all different platforms.
+    More Details :
+    https://app-manifest.firebaseapp.com/
+    https://developers.google.com/web/fundamentals/web-app-manifest/
