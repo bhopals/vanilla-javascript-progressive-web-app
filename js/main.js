@@ -19,7 +19,7 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/sw.js').then(function(result){
         console.log('Service Worker Registered');
         console.log('Scope: ' + result.scope);
-
+        console.log('calling');
         subscribeToPush();
         /*
         if('Notification' in window){
@@ -41,7 +41,6 @@ if('serviceWorker' in navigator){
             notify('NCC Computer Science', options);
         }
         */
-
     }, function(error){
         console.log('Service Worker Regiatration Failed');
         console.log(error);
@@ -105,15 +104,13 @@ function hideInstructions(){
     document.getElementById('instructions').style.display = 'none';
 }
 
-
-function subscribeToPush() {
-    navigator.serviceWorker.ready.then(function(registration){
-
-        registration.pushManager.subscribe({
-            userVisibleOnly:true }).then(function(sub){
-                console.log(JSON.stringify(sub));
-                console.log("Endpoint: "+sub.endpoint);
-                console.log("User Subscribed");
-            });
+function subscribeToPush(){
+    navigator.serviceWorker.ready.then(function(reg){
+        reg.pushManager.subscribe({userVisibleOnly:true}).then(function(sub){
+            console.log(JSON.stringify(sub));
+            console.log("Endpoint: " + sub.endpoint);
+            console.log('User Subscribed');
+        });
     });
 }
+

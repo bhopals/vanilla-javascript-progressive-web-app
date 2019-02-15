@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var cacheName = 'CSv5';
+var cacheName = 'CSv4';
 
 var cachedFiles = [
     '/',
@@ -87,3 +87,4 @@ self.addEventListener('notificationclick', function(evt){
     }
     closeNotification('Notification Clicked', evt);
 });
+
