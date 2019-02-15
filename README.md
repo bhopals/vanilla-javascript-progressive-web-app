@@ -437,6 +437,39 @@ self.addEventListener('notificationclick', function(evt){
 
 ```
 
+4. Sending Push Notification from the SERVER
+
+In general Push Notifications work like this:
+
+    1.  The client accesses the PWA, and it asks the user to allow notifications via the push manager's subscribe method. 
+
+    2.  If the user allows notifications, a subscription object is created. Developers need to store the data in the subscription for sending Push Messages.
+
+    3. An HTTP Post request, that may or may not be originated from the app server, is made to a messaging service that 
+        includes data from the subscription. 
+
+    4. The messaging service sends the Push Message to the client using data stored in the subscription. 
+
+    5. If needed, when the message is received, the app is awakened, and the push message is routed to the correct service worker.
+
+    6. The service worker handles the push message, in the push event listener.
+
+    7. If the user clicks on the notification, the code in the notification click event executes, waking the PWA if needed.
+
+                                Subscription
+    -------------------      <-------------          ----------------
+    |    App Server   |                              |    Client    |   <---------->  SERVICE Worker
+    -------------------      -------------->         ---------------- 
+            |                   PWA                        ^
+            |                                              | PUSH Message
+            |                                              |
+            V                                              |
+    -------------------                               ---------------------
+    |    HTTP Post    |         ----------->          | Messaging Service |
+    -------------------                               ---------------------
+
+
+
 ### Demo
 
 [Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)
