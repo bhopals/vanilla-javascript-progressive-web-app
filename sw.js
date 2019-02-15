@@ -60,3 +60,12 @@ self.addEventListener('fetch', function(evt){
        })
     );
 });
+
+function closeNotification(message, event){
+    console.log(message, event.notificaiton.data);
+    event.notificaiton.close();
+}
+
+self.addEventListener('notificationclose', function(event){
+    closeNotification("Notification Closed", event)
+});
