@@ -443,7 +443,8 @@ In general Push Notifications work like this:
 
     1.  The client accesses the PWA, and it asks the user to allow notifications via the push manager's subscribe method. 
 
-    2.  If the user allows notifications, a subscription object is created. Developers need to store the data in the subscription for sending Push Messages.
+    2.  If the user allows notifications, a subscription object is created. 
+    Developers need to store the data in the subscription for sending Push Messages.
 
     3. An HTTP Post request, that may or may not be originated from the app server, is made to a messaging service that 
         includes data from the subscription. 
@@ -568,7 +569,7 @@ VAPID (Voluntary Application Server Identification for Web Push) - The VAPID pro
     C. Offlice and Sync Capabilites (Caching and Syncing): IndexedDB, PouchDB, Background Sync
     D. Javascript Frameworks : Angular, React, Vue
 
-    
+
         
 
 
