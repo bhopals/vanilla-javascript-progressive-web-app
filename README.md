@@ -469,6 +469,15 @@ In general Push Notifications work like this:
     -------------------                               ---------------------
 
 
+Google provides Firebase Cloud messaging tool as its messaging service. To do that we need to create project at
+https://console.firebase.google.com/, one project is created, copy the SENDER ID from SETTINGS > CLOUD MESSAGING > Sender ID which looks like "899022591513". Once copied, add that sender id in manifest.json's "gsm_sender_id"
+
+```
+{
+    "gcm_sender_id": "899022591513"
+}
+```
+
 
 ### Demo
 
