@@ -321,8 +321,25 @@ Make sure to add extra META tag information to make the APP iOS compatible.
     4. Does not redirect HTTP traffic to HTTPS
     5. Does not register a service worker
 
-For more Informatio : https://developers.google.com/web/progressive-web-apps/checklist
+For more Information : https://developers.google.com/web/progressive-web-apps/checklist
 
+
+### Notifications ###
+
+Native App Core Featuer - Push Notification is a core feature to reengage mobile users. 
+example : Message or any App sends alert
+
+
+#### Vocabulary ####
+    -   Notification - is a message dispalyed to the user outside of the app's normal UI.
+    -   Push Message - A message sent from some servers to registered clients
+    -   Push Notification - A notification displayed response to push message
+
+### Process #### 
+    -   Create and display a notification
+    -   Configure a push messaging service (Google Firebase)
+    -   Write a script to send a push message (Node and Mozilla Web Push library)
+    -   Show a notification in response tp a push message   
 
 
 
