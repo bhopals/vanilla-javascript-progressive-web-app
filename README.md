@@ -526,6 +526,52 @@ curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq4
 7. Web Push Library
 There are many third-party libraries which provides security and encryption mechanism to send PUSH message. In our demo we would use Mozilla **web-push library**, a node module.
 
+```
+npm install web-push --save   
+```
+
+Once saved, use the below code snippet to send Push from the web-push module to the application
+
+```
+var webPush = require('web-push');
+
+var pushSub = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbbHx_Wfq7NSQKEuOEcsEKmwuykFaliE_-zGBUANhkrbKQM-150xsE7cIbvE0O_uS2S1RvkSihOQ5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ","keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC19254JcQftJLTay5qJ1zSUTaOGnxXr6AGDqXLEudSKgMZqMmV5I"}};
+
+var options = {
+    TTL: 60,
+    gcmAPIKey: 'AAAAgZRAuuo:APA91bGCp7BEJaB7yhtx5si57gG18nhtsv1dHOn4yv1ftg5KHslwRT42jUKnlXYKSaQyNEIpvVh0A4dgXOKquWwLYzo9mcNqF0GAfKUQgfpU1xtAlKI8W7WZMVgwyRzzAl2tjr7Sux1e9vp40zH-_GFOJBUtHW82FA'
+};
+
+var payload = 'index.html#programs';
+
+webPush.sendNotification(pushSub, payload, options);
+
+```
+
+
+8. Security Concerns
+
+Since we have created the app that can accept and send notification, but how would we ensure the safety and security.
+VAPID (Voluntary Application Server Identification for Web Push) - The VAPID protocol exists to address manu of these risks.
+
+
+9. The PWA Case
+    -   Offline Capabilities
+    -   Reengages Users
+    -   App-like Behaviour
+
+
+10. Additional Tools 
+
+    A. HTTPS : Lets Encrypt, AWS Certificate Manager
+    B. Web Manifest : Favicon Generator, PWA Builder
+    C. Offlice and Sync Capabilites (Caching and Syncing): IndexedDB, PouchDB, Background Sync
+    D. Javascript Frameworks : Angular, React, Vue
+
+    
+        
+
+
 ### Demo
 
 [Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)

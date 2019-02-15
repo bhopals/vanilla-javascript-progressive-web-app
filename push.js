@@ -5,11 +5,11 @@
  */
 var webPush = require('web-push');
 
-var pushSub = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbbHx_Wfq7NSQKEuOEcsEKmwuykFaliE_-zGBUANhkrbKQM-150xsE7cIbvE0O_uS2S1RvkSihOQ5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ","keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC19254JcQftJLTay5qJ1zSUTaOGnxXr6AGDqXLEudSKgMZqMmV5I"}};
+var pushSub = {"endpoint":"https://android.googleapis.com/gcm/send/d18eF13HSz0:APA91bHyn2CPkbbUKe2sACrCs8HFm7OtatqGl5x4vls5h4D4buTr2yi-UccFQc-5Cc_7SE4Xs2pa7uDF7lIV_5FaHBDaW088tae0Ww97hY9Z4rtrPzsoysiDag1bj8LrZgUm7u4OxUajLMijhnCbmIF7sp8_--Jhiw","expirationTime":null,"keys":{"p256dh":"BBwotnU53UY4pFk3xJIuZHkGYxAA7ETWCN83ql0AfYZ8R9_IN5YR8D_8oCcGFbMmcdaCOdJ5E3Iz1xLbogHsseo=","auth":"ZWq9FG-SjihtFNgC1xPQOw=="}};
 
 var options = {
     TTL: 60,
-    gcmAPIKey: 'AAAAgZRAuuo:APA91bGCp7BEJaB7yhtx5si57gG18nhtsv1dHOn4yv1ftg5KHslwRT42jUKnlXYKSaQyNEIpvVh0A4dgXOKquWwLYzo9mcNqF0GAfKUQgfpU1xtAlKI8W7WZMVgwyRzzAl2tjr7Sux1e9vp40zH-_GFOJBUtHW82FA'
+    gcmAPIKey: 'AAAAiiHEZlY:APA91bE_j82pR4mfSE1s3iIii1xyuTYo767ghAp0oiZyYTJSbQuiSyGgH8o9W6h2cBIXEKhROAMs0yNMx6YbmCJS0jgwXiS1jl9y5vYc4CHzO6mhufU79D8xx9_J899vNZYHeXbaqFfO'
 };
 
 var payload = 'index.html#programs';
