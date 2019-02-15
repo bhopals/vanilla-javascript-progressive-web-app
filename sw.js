@@ -90,12 +90,20 @@ self.addEventListener('notificationclick', function(evt){
 
 self.addEventListener('push', function(evt){
     console.log('Push Message Received');
+    var loc;
+    if(evt.data){
+        console.log('Data Received');
+        console.log(evt.data.text());
+        loc = evt.data.text();
+    }else{
+        loc = 'index.html#info';
+    }
     var options = {
         body: 'See What\'s New',
         icon: 'android-chrome-192x192.png',
         data: {
             timestamp: Date.now(),
-            loc: 'index.html#info'
+            loc: loc
         },
         actions: [
             {action: 'go', title: 'Go Now'}

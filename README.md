@@ -522,6 +522,10 @@ Use the CURL Command to send the Notification
 curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEvfunK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQqUC4ksEgDNfTTCFBANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wFYAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
 ```
 
+
+7. Web Push Library
+There are many third-party libraries which provides security and encryption mechanism to send PUSH message. In our demo we would use Mozilla **web-push library**, a node module.
+
 ### Demo
 
 [Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)
