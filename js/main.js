@@ -51,3 +51,5 @@ function installApp(){
 window.addEventListener('appinstalled', function(evt){
     console.log('App Installed Event');
 });
+
+

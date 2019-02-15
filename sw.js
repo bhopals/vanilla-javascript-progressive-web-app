@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var cacheName = 'CSv2';
+var cacheName = 'CSv3';
 
 var cachedFiles = [
     '/',
@@ -15,7 +15,11 @@ var cachedFiles = [
     '/img/cassidy.jpg',
     '/img/cramer.jpg',
     '/img/duffy.jpg',
-    '/img/gabor.jpg'
+    '/img/gabor.jpg',
+    '/img/aths.png',
+    '/img/share.png',
+    '/apple-touch-icon.png',
+    '/android-chrome-192x192.png'
 ];
 
 self.addEventListener('install', function(evt){
