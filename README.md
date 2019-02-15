@@ -441,7 +441,8 @@ self.addEventListener('notificationclick', function(evt){
 
 In general Push Notifications work like this:
 
-    1.  The client accesses the PWA, and it asks the user to allow notifications via the push manager's subscribe method. 
+    1.  The client accesses the PWA, and it asks the user to allow notifications via the push manager's 
+    subscribe method. 
 
     2.  If the user allows notifications, a subscription object is created. 
     Developers need to store the data in the subscription for sending Push Messages.
@@ -451,11 +452,13 @@ In general Push Notifications work like this:
 
     4. The messaging service sends the Push Message to the client using data stored in the subscription. 
 
-    5. If needed, when the message is received, the app is awakened, and the push message is routed to the correct service worker.
+    5. If needed, when the message is received, the app is awakened, and the push message is 
+    routed to the correct service worker.
 
     6. The service worker handles the push message, in the push event listener.
 
-    7. If the user clicks on the notification, the code in the notification click event executes, waking the PWA if needed.
+    7. If the user clicks on the notification, the code in the notification click event executes, 
+    waking the PWA if needed.
 
                                 Subscription
     -------------------      <-------------          ----------------
@@ -522,14 +525,17 @@ Use the CURL Command to send the Notification
 ```
 curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq
 4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEv
-funK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQq
+funK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header 
+"TTL: 60" --header "Content-Length: 0" --header 
+"Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQq
 UC4ksEgDNfTTCFBANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wF
 YAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
 ```
 
 
 7. Web Push Library
-There are many third-party libraries which provides security and encryption mechanism to send PUSH message. In our demo we would use Mozilla **web-push library**, a node module.
+There are many third-party libraries which provides security and encryption mechanism to send PUSH message. 
+In our demo we would use Mozilla **web-push library**, a node module.
 
 ```
 npm install web-push --save   
