@@ -446,8 +446,8 @@ In general Push Notifications work like this:
     2.  If the user allows notifications, a subscription object is created. 
     Developers need to store the data in the subscription for sending Push Messages.
 
-    3. An HTTP Post request, that may or may not be originated from the app server, is made to a messaging service that 
-        includes data from the subscription. 
+    3. An HTTP Post request, that may or may not be originated from the app server, is made to a 
+    messaging service that  includes data from the subscription. 
 
     4. The messaging service sends the Push Message to the client using data stored in the subscription. 
 
@@ -520,7 +520,10 @@ self.addEventListener('push', function(event){
 Use the CURL Command to send the Notification
 
 ```
-curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEvfunK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQqUC4ksEgDNfTTCFBANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wFYAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
+curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq
+4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEv
+funK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQqUC4ksEgDNfTTCF
+BANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wFYAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
 ```
 
 
