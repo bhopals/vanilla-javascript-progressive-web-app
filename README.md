@@ -548,7 +548,8 @@ var webPush = require('web-push');
 
 var pushSub = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbbHx
 _Wfq7NSQKEuOEcsEKmwuykFaliE_-zGBUANhkrbKQM-150xsE7cIbvE0O_uS2S1RvkSihOQ
-5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ","keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC192
+5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ",
+"keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC192
 54JcQftJLTay5qJ1zSUTaOGnxXr6AGDqXLEudSKgMZqMmV5I"}};
 
 var options = {
