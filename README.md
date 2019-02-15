@@ -14,11 +14,12 @@
         app-like experience 
 
 
-
     
-    This is what progressive Web Apps are all about. Progressive web apps, or PWA's are website that can be stored on a mobile device using new web app technology like **Web App manifest** and **JavaScript Service workers** 
+This is what progressive Web Apps are all about. Progressive web apps, or PWA's are website 
+that can be stored on a mobile device using new web app technology like **Web App manifest** 
+and **JavaScript Service workers** 
 
-    **PWA Checklist**
+**PWA Checklist**
     
     - Responsive
 
@@ -42,6 +43,7 @@
 
 #### Icon for the PWA ####
 http://realfavicongenerator.net  for the ICON.
+
  - Load your transparent ICON file and Upload. Once uploaded, select/choose the color for the background color. 
  - Also, can select ICON version for Andriod, IOS, safari, windows with CUSTOM name for the app.
  - At favicon Generator Options, choose "I will place favicon files...at the root" and click on **GENERATE your
@@ -53,10 +55,10 @@ http://realfavicongenerator.net  for the ICON.
 
 #### Web App Manifest ####
 
- -  When developer provides DATA about DATA, its called **Metadata**. 
- -  Web App Manifest provides information about WebApp to the browser. The information contains Metadata, properties 
-    (Name, Icons, color scheme, start URL etc).
- -  Manifest is a simple JSON file.
+-  When developer provides DATA about DATA, its called **Metadata**. 
+-  Web App Manifest provides information about WebApp to the browser. The information contains Metadata, properties 
+(Name, Icons, color scheme, start URL etc).
+-  Manifest is a simple JSON file.
 
     ```
     {
@@ -83,20 +85,20 @@ http://realfavicongenerator.net  for the ICON.
 
     ```
 
-    So by doing that, we can setup different color and start-url for all different platforms.
-    More Details :
-    https://app-manifest.firebaseapp.com/
-    https://developers.google.com/web/fundamentals/web-app-manifest/
+So by doing that, we can setup different color and start-url for all different platforms.
+More Details :
+https://app-manifest.firebaseapp.com/
+https://developers.google.com/web/fundamentals/web-app-manifest/
 
 
 **iOs Emulater**
 Make sure to add extra META tag information to make the APP iOS compatible.
-``` 
+    ``` 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-stautus-bar-style" content="default">
         <link rel="apple-touch-startup-image" href="/apple-touch-icon.png">
 
-```
+    ```
 
 #### Emulator Development Limitations ####
 - PWAs require HTTPS
@@ -119,16 +121,16 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 
 **Service Workers Lifecycle**
     
-    -   Register - Registering a service worker
-            -   App-like Functionality
-            -   Navigator.serviceWorker.register() - (Should be from Main Script)
-            -   Scope - Always should be public root of your domain (its Customary to serve a service worker
-                from root of the site)
+1.  Register - Registering a service worker
+
+        -   App-like Functionality
+        -   Navigator.serviceWorker.register() - (Should be from Main Script)
+        -   Scope - Always should be public root of your domain (its Customary to serve a service worker
+            from root of the site)
 
 
-            This should go into initialize JS file of the PROJECT so it can register Service Workers.
-            ```
-
+        This should go into initialize JS file of the PROJECT so it can register Service Workers.
+          
             if('serviceWorker' in navigator) {
 
                 //Register ServiceWorker
@@ -142,16 +144,16 @@ Make sure to add extra META tag information to make the APP iOS compatible.
             } else {
                 console.log("Service Workers Not Supported");
             }
-            ```
+           
 
-    -   Install
+2.  Install
             -   Files Once
             -   Offlince Cache initialization
             -   Notified by promise ( waitUntil METHOD)
             
             Note - Use the **SELF** keyword to refer the SERVICE Worker.
 
-            ```
+           
             var  cacheName = "CSv1";
 
                 var cacheFiles = [
@@ -179,11 +181,11 @@ Make sure to add extra META tag information to make the APP iOS compatible.
                     
                 });
 
-            ```
+           
 
-            Here in install event callback method, while adding files to the cache, we would call
-            event.waitUntil() method that takes a PROMISE as a parameter which defines the length 
-            of the install process. Here we would chain TWO promises
+Here in install event callback method, while adding files to the cache, we would call
+event.waitUntil() method that takes a PROMISE as a parameter which defines the length 
+of the install process. Here we would chain TWO promises
 
             For example:
 
@@ -204,14 +206,12 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 
 
 
-    -   Activate
-            -   Update or replace cached files
-            -   claim() - If clients are claimed then only the fetches goes through the Service Workers
-            -   skipWaiting() - To remove the old Service worker and activating/ installing the new one
+3.  Activate
 
-    
+    -   Update or replace cached files
+    -   claim() - If clients are claimed then only the fetches goes through the Service Workers
+    -   skipWaiting() - To remove the old Service worker and activating/ installing the new one
 
-        ```
 
             self.addEventListener('activate', function(event){
                 console.log("Service Worker Activated");
@@ -232,65 +232,60 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 
             })
 
-
-        ```
-        Here Promise.all returned in the keyList.map method resolve. Promise.all is a convenient way to aggregate promises with associated collections. It will return a fulfilled promise if all the promise
-         in the collection are fullfilled. If any promise in the collection rejects, all methods will fail. 
-         Essentailly, a fulfilled promise is returned when each outdated cache is deleted.
-
-
-        client.claims set the service worker as the active service worker for all clients in scope.
-        self.clients.claim();
-
-    -   Fetch
-            -   Custom Navigation - can interrupt navigation event and provide custom functionality
-            -   Cache First Policy - In this case NO internet connetion required
-            -   Network First Policy
-            -   Cache-Then-Network Policy
-            -   Network-Then-Cache Policy
-            -   Stale while revalidate Policy
-
-                ```
-                self.addEventListener('fetch', function(event){
-                    //when any request is made on PWA
-                    console.log("Fetch Event Occurent:", event.request.url);
-                    
-                    //RespondWith Method requires a PROMISE
-                    event.respondWith(
-
-                        //Cache-then-Network Policy
-                        caches.match(event.request).then(function(response){
-                            return response || fetch(event.request);
-                        })
-
-                        //Network-then-Cache Policy
-                        caches.match(event.request).then(function(response){
-                            return fetch(event.request) ||  response;
-                        })
+Here Promise.all returned in the keyList.map method resolve. Promise.all is a convenient way
+to aggregate promises with associated collections. It will return a fulfilled promise if
+all the promise in the collection are fullfilled. If any promise in the collection rejects, 
+all methods will fail. Essentailly, a fulfilled promise is returned when each outdated cache is deleted.
 
 
-                    );
-                    
-                })
-               
-                ```
-        
+client.claims set the service worker as the active service worker for all clients in scope.
+
+self.clients.claim();
+
+4.    Fetch
+
+    -   Custom Navigation - can interrupt navigation event and provide custom functionality
+    -   Cache First Policy - In this case NO internet connetion required
+    -   Network First Policy
+    -   Cache-Then-Network Policy
+    -   Network-Then-Cache Policy
+    -   Stale while revalidate Policy
+
+            self.addEventListener('fetch', function(event){
+                //when any request is made on PWA
+                console.log("Fetch Event Occurent:", event.request.url);
+                
+                //RespondWith Method requires a PROMISE
+                event.respondWith(
+
+                    //Cache-then-Network Policy
+                    caches.match(event.request).then(function(response){
+                        return response || fetch(event.request);
+                    })
+
+                    //Network-then-Cache Policy
+                    caches.match(event.request).then(function(response){
+                        return fetch(event.request) ||  response;
+                    })
 
 
-        //TO Intercept request
+                );
+                
+            })
+            
 
 
-    -   Add to home screen
-            -   The app isn't already installed
-            -   The user has interacted with the domain for 30 seconds
-            -   Served over HTTPS
-            -   Registers a service worker that includes a fetch over event handler
-            -   A web manifest is added to the home screen 
-    
-    -   Push
-            -   Reengage Users
-            -   Native app - Messaging
-            -   Visual and auditory cues
+-   Add to home screen
+    -   The app isn't already installed
+    -   The user has interacted with the domain for 30 seconds
+    -   Served over HTTPS
+    -   Registers a service worker that includes a fetch over event handler
+    -   A web manifest is added to the home screen 
+
+-   Push
+    -   Reengage Users
+    -   Native app - Messaging
+    -   Visual and auditory cues
 
 
 
