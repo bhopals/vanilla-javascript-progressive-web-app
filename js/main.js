@@ -19,6 +19,12 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/sw.js').then(function(result){
         console.log('Service Worker Registered');
         console.log('Scope: ' + result.scope);
+        if('Notification' in window){
+            console.log('Notifications Supported');
+            Notification.requestPermission(function(status){
+                console.log('Notification Status: ', status);
+            });
+        }
     }, function(error){
         console.log('Service Worker Regiatration Failed');
         console.log(error);
