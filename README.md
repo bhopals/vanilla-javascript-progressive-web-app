@@ -274,12 +274,7 @@ Make sure to add extra META tag information to make the APP iOS compatible.
                 })
                
                 ```
-           
-            
-
-
-    
-
+        
 
 
         //TO Intercept request
@@ -299,9 +294,24 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 
 
 
+
 **Note**
     To check that SITE is PWA or not. In Chrome Dev Tools, go to AUDIT section, click on RUN AUDIT. Once clicked
     a full AUDIT would run and scan for all PWA checklist options**
+
+
+**Note**
+    1.  To resolve PWA error "Link to cross-origin destinations are unsafe", use below code settings
+
+        - Add rel="noopener" or rel="noreferrer" to any external links to improve performance and prevent security 
+          vulenrabilities. This is for all the external links that we have in our application. This would open the 
+          targeted URL's in new page.
+
+    2. To resolve, "HTML element doesnot have lang object"
+        - we need to add lang="en" in <html>  
+        
+
+
 
 **Progressive Web App CheckList** (Failed Error List)
 
