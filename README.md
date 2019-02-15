@@ -522,8 +522,9 @@ Use the CURL Command to send the Notification
 ```
 curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq
 4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEv
-funK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQqUC4ksEgDNfTTCF
-BANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wFYAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
+funK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQq
+UC4ksEgDNfTTCFBANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wF
+YAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
 ```
 
 
@@ -539,11 +540,16 @@ Once saved, use the below code snippet to send Push from the web-push module to 
 ```
 var webPush = require('web-push');
 
-var pushSub = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbbHx_Wfq7NSQKEuOEcsEKmwuykFaliE_-zGBUANhkrbKQM-150xsE7cIbvE0O_uS2S1RvkSihOQ5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ","keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC19254JcQftJLTay5qJ1zSUTaOGnxXr6AGDqXLEudSKgMZqMmV5I"}};
+var pushSub = {"endpoint":"https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbbHx
+_Wfq7NSQKEuOEcsEKmwuykFaliE_-zGBUANhkrbKQM-150xsE7cIbvE0O_uS2S1RvkSihOQ
+5SWPAcbY0hG7Q5CF3_WxEz4fBWIilW0HCQEvHiyvbiAWP6nG87rObu5UWJ","keys":{"auth":"Y3sg1aHF2pQWnNDrFHZstw","p256dh":"BGnjSP1YKac4kjjaEioJLjZI1OzyIx2rrGWC192
+54JcQftJLTay5qJ1zSUTaOGnxXr6AGDqXLEudSKgMZqMmV5I"}};
 
 var options = {
     TTL: 60,
-    gcmAPIKey: 'AAAAgZRAuuo:APA91bGCp7BEJaB7yhtx5si57gG18nhtsv1dHOn4yv1ftg5KHslwRT42jUKnlXYKSaQyNEIpvVh0A4dgXOKquWwLYzo9mcNqF0GAfKUQgfpU1xtAlKI8W7WZMVgwyRzzAl2tjr7Sux1e9vp40zH-_GFOJBUtHW82FA'
+    gcmAPIKey: 'AAAAgZRAuuo:APA91bGCp7BEJaB7yhtx5si57gG18nhtsv1dHOn4yv1ftg5
+    KHslwRT42jUKnlXYKSaQyNEIpvVh0A4dgXOKquWwLYzo9mcNqF0GAfKUQgfpU1xtAlKI8W7WZMV
+    gwyRzzAl2tjr7Sux1e9vp40zH-_GFOJBUtHW82FA'
 };
 
 var payload = 'index.html#programs';
