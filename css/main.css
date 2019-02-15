@@ -263,6 +263,32 @@ aside a{
     margin: 5px 10px;
 }
 
+#instructions{
+    text-align: center;
+    background-color: #f2f4f4;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    left: 20px;
+    width: calc(100%-40px);
+    padding: 0px 10px 10px 10px;
+    display: none;
+}
+
+#instructions img{
+    max-width: 64px;
+    
+}
+
+#instructions button{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #264de4;
+    color: white;
+    border: 1px #2965f1 solid;
+}
+
 
 /* ==========================================================================
    Media Queries

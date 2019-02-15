@@ -25,4 +25,29 @@ if('serviceWorker' in navigator){
     console.log('Service Workers Not Supported');
 }
 
+var installEvt;
+window.addEventListener('beforeinstallprompt', function(evt){
+    console.log('Before Install Prompt');
+    installEvt = evt;
+    evt.preventDefault();
+    document.getElementById('addToHomeScreen').style.display = 'block';
+});
 
+function hidePrompt(){
+    document.getElementById('addToHomeScreen').style.display = 'none';
+}
+
+function installApp(){
+    hidePrompt();
+    installEvt.prompt();
+    installEvt.userChoice.then(function(result){
+        if(result.outcome === 'accepted')
+            console.log('App Installed');
+        else
+            console.log('App Not Installed');
+    });
+}
+
+window.addEventListener('appinstalled', function(evt){
+    console.log('App Installed Event');
+});
