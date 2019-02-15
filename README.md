@@ -399,6 +399,44 @@ example : Message or any App sends alert
 
 ```
 
+3. Close Notification
+
+```
+    function closeNotification(message, event){
+        console.log(message, event.notificaiton.data);
+        event.notificaiton.close();
+    }
+
+    self.addEventListener('notificationclose', function(event){
+        closeNotification("Notification Closed", event)
+    });
+
+```
+
+
+4. Find active client and navigate to Location
+
+```
+self.addEventListener('notificationclick', function(evt){
+    if(evt.action !== 'close'){
+        evt.waitUntil(
+            self.clients.matchAll({type: 'window', includeUncontrolled: 'true'}).then(function(allClients){
+                console.log(allClients);
+                for(var i = 0; i<allClients.length; i++){
+                    if(allClients[i].visibilityState === 'visible'){
+                        console.log('Navigating');
+                        allClients[i].navigate(evt.notification.data.loc);
+                        break;
+                    }
+                }
+            })
+        );
+    }
+    closeNotification('Notification Clicked', evt);
+});
+
+```
+
 ### Demo
 
 [Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)

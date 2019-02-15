@@ -99,3 +99,5 @@ window.onload = function(){
 function hideInstructions(){
     document.getElementById('instructions').style.display = 'none';
 }
+
+

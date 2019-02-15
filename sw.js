@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var cacheName = 'CSv3';
+var cacheName = 'CSv4';
 
 var cachedFiles = [
     '/',
@@ -61,11 +61,29 @@ self.addEventListener('fetch', function(evt){
     );
 });
 
-function closeNotification(message, event){
-    console.log(message, event.notificaiton.data);
-    event.notificaiton.close();
+function closeNotification(msg, evt){
+    console.log(msg, evt.notification.data);
+    evt.notification.close();
 }
 
-self.addEventListener('notificationclose', function(event){
-    closeNotification("Notification Closed", event)
+self.addEventListener('notificationclose', function(evt){
+    closeNotification('Notification Closed', evt);
+});
+
+self.addEventListener('notificationclick', function(evt){
+    if(evt.action !== 'close'){
+        evt.waitUntil(
+            self.clients.matchAll({type: 'window', includeUncontrolled: 'true'}).then(function(allClients){
+                console.log(allClients);
+                for(var i = 0; i<allClients.length; i++){
+                    if(allClients[i].visibilityState === 'visible'){
+                        console.log('Navigating');
+                        allClients[i].navigate(evt.notification.data.loc);
+                        break;
+                    }
+                }
+            })
+        );
+    }
+    closeNotification('Notification Clicked', evt);
 });
