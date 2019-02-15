@@ -24,6 +24,18 @@ if('serviceWorker' in navigator){
             Notification.requestPermission(function(status){
                 console.log('Notification Status: ', status);
             });
+            var options = {
+                body: 'See What\'s New',
+                icon: 'android-chrome-192x192.png',
+                data: {
+                    timestamp: Date.now(),
+                    loc: 'index.html#info'
+                },
+                actions: [
+                    {action: 'go', title: 'Go Now'}
+                ]
+            };
+            notify('NCC Computer Science', options);
         }
     }, function(error){
         console.log('Service Worker Regiatration Failed');
@@ -31,6 +43,14 @@ if('serviceWorker' in navigator){
     });
 }else{
     console.log('Service Workers Not Supported');
+}
+
+function notify(title, options){
+    if(Notification.permission === 'granted'){
+        navigator.serviceWorker.ready.then(function(reg){
+            reg.showNotification(title, options);
+        });
+    }
 }
 
 var installEvt;

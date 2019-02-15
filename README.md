@@ -324,6 +324,24 @@ Make sure to add extra META tag information to make the APP iOS compatible.
 For more Information : https://developers.google.com/web/progressive-web-apps/checklist
 
 
+#### Install APP to the HOME Screen ####
+
+Below code snipped will install the app
+
+```
+function installApp(){
+    hidePrompt();
+    installEvt.prompt();
+    installEvt.userChoice.then(function(result){
+        if(result.outcome === 'accepted')
+            console.log('App Installed');
+        else
+            console.log('App Not Installed');
+    });
+}
+
+```
+
 ### Notifications ###
 
 Native App Core Featuer - Push Notification is a core feature to reengage mobile users. 
@@ -335,14 +353,56 @@ example : Message or any App sends alert
     -   Push Message - A message sent from some servers to registered clients
     -   Push Notification - A notification displayed response to push message
 
-### Process #### 
+#### Process #### 
     -   Create and display a notification
     -   Configure a push messaging service (Google Firebase)
     -   Write a script to send a push message (Node and Mozilla Web Push library)
     -   Show a notification in response tp a push message   
 
 
+#### Steps ####
 
+1. Request Notification Permission
+
+    The below code should be placed in the Service Workers Registration Success PROMISE.
+
+    ```
+        if('Notification' in window){
+            console.log('Notifications Supported');
+            Notification.requestPermission(function(status){
+                console.log('Notification Status: ', status);
+            });
+        }
+    ```
+    A notification can be sent even the PWA isn't active.
+
+
+2. Show notification with options
+
+```
+            var options = {
+                body: 'See What\'s New',
+                icon: 'android-chrome-192x192.png',
+                data: {
+                    timestamp: Date.now(),
+                    loc: 'index.html#info'
+                },
+                actions: [
+                    {action: 'go', title: 'Go Now'}
+                ]
+            };
+
+         notify('NCC Computer Science', options);
+
+        function notify(title, options){
+            if(Notification.permission === 'granted'){
+                navigator.serviceWorker.ready.then(function(reg){
+                    reg.showNotification(title, options);
+                });
+            }
+        }
+
+```
 
 ### Demo
 
