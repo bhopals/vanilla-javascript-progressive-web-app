@@ -496,6 +496,32 @@ function subscribeToPush() {
 }
 ```
 
+6. Handling Push Notification
+
+```
+self.addEventListener('push', function(event){
+    console.log("Push Message Received");
+    var options = {
+        body: 'See What\'s New',
+        icon: 'android-chrome-192x192.png',
+        data: {
+            timestamp: Date.now(),
+            loc: 'index.html#info'
+        },
+        actions: [
+            {action: 'go', title: 'Go Now'}
+        ]
+    };
+    
+})
+```
+
+Use the CURL Command to send the Notification
+
+```
+curl "https://android.googleapis.com/gcm/send/f8-QsF-dAeU:APA91bFJoPWMm7dQ8uTjq4RmIiqGnIATQ7QmFRexeeVrQfB0sAILU66dmLt04upzPl5-XESXlLeZ6gLU9nZjGGIdqn18MoTi4gUNEvfunK75tiozoihasdxi2n5ARf3DR-7V6030rJvW" --request POST --header "TTL: 60" --header "Content-Length: 0" --header "Authorization: key=AAAA0VHsFhk:APA91bGNigw_xBp3TJ09yv_eqSPWySoxSQqUC4ksEgDNfTTCFBANJSEq1zztzM8830f11SL4c_2jB1hRUR9QIhsF5maHX2VDNUfWnOjo7wFYAgTXCFxi_hSRAWBpNaEwL9gQq9EaucoS"
+```
+
 ### Demo
 
 [Demo Link](https://vanilla-javascript-progressive.herokuapp.com/)
