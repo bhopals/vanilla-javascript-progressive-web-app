@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var cacheName = 'CSv4';
+var cacheName = 'CSv5';
 
 var cachedFiles = [
     '/',

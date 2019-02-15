@@ -476,8 +476,25 @@ https://console.firebase.google.com/, one project is created, copy the SENDER ID
 {
     "gcm_sender_id": "899022591513"
 }
+
 ```
 
+
+5. Subscribe to PUSH Event
+
+```
+function subscribeToPush() {
+    navigator.serviceWorker.ready.then(function(registration){
+
+        registration.pushManager.subscribe({
+            userVisibleOnly:true }).then(function(sub){
+                console.log(JSON.stringify(sub));
+                console.log("Endpoint: "+sub.endpoint);
+                console.log("User Subscribed");
+            });
+    });
+}
+```
 
 ### Demo
 
