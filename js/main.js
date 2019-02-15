@@ -19,7 +19,6 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/sw.js').then(function(result){
         console.log('Service Worker Registered');
         console.log('Scope: ' + result.scope);
-        console.log('calling');
         subscribeToPush();
         /*
         if('Notification' in window){

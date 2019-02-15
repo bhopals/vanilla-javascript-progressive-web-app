@@ -75,12 +75,18 @@ self.addEventListener('notificationclick', function(evt){
         evt.waitUntil(
             self.clients.matchAll({type: 'window', includeUncontrolled: 'true'}).then(function(allClients){
                 console.log(allClients);
+                var matchingClient = null;
                 for(var i = 0; i<allClients.length; i++){
                     if(allClients[i].visibilityState === 'visible'){
+                        matchingClient = allClients[i];
                         console.log('Navigating');
-                        allClients[i].navigate(evt.notification.data.loc);
+                        matchingClient.navigate(evt.notification.data.loc);
                         break;
                     }
+                }
+                if(matchingClient === null){
+                    console.log('Opening');
+                    self.clients.openWindow(evt.notification.data.loc);
                 }
             })
         );
